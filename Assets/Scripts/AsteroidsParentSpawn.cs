@@ -29,8 +29,8 @@ public class AsteroidsParentSpawn : MonoBehaviour
         Vector3 spawnPoint = this.transform.position + spawnDirection;
         Quaternion rotation = Quaternion.AngleAxis(Random.Range(-this.rotationValue, this.rotationValue), Vector3.left);
 
-        Instantiate(this.asteroidPrefab, spawnPoint, rotation);
-    } 
+        Instantiate(this.asteroidPrefab, spawnPoint, rotation, transform);
+    }
 
     private bool shouldSpawn()
     {

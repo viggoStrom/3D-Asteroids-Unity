@@ -50,12 +50,12 @@ public class ShipController : MonoBehaviour
         transform.Rotate(Vector3.forward, -rollInput * RollSpeed * Time.deltaTime);
 
         transform.Translate(FlightSpeed * Time.deltaTime * Vector3.forward);
-        if (Input.GetKeyDown(KeyCode.W))
+
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
         {
             FlightSpeed += 3;
-            //rigidbody.AddForce(FlightSpeed * Time.deltaTime * Vector3.forward);
         }
-        if (Input.GetKeyUp(KeyCode.W))
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
         {
             FlightSpeed -= 3;
         }

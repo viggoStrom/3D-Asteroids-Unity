@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 6f95bc41147fade4ab75d753f8598b44, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -129,10 +129,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mass: 10
   maxLifeTime: 60
-  collisonDistanceOffset: 20
+  collisonDistanceOffset: 0
   minScale: 1
   maxScale: 5
   minSpeed: 0
-  maxSpeed: 0
+  maxSpeed: 2
   rotationValue: 90
   rotationMagnifier: 1
