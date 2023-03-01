@@ -16,7 +16,7 @@ public class AsteroidsParentSpawn : MonoBehaviour
     void Update()
     {
         transform.Rotate(randomRotation * Time.deltaTime);
-        if (shouldSpawn())
+        if (ShouldSpawn())
         {
             Spawn();
         }
@@ -32,7 +32,7 @@ public class AsteroidsParentSpawn : MonoBehaviour
         Instantiate(this.asteroidPrefab, spawnPoint, rotation, transform);
     }
 
-    private bool shouldSpawn()
+    private bool ShouldSpawn()
     {
         return Time.time > spawnRate;
     }

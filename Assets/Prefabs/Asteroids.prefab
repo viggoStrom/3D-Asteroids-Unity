@@ -97,7 +97,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &-5201759117256476334
 Rigidbody:
@@ -129,9 +129,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mass: 10
   maxLifeTime: 60
-  collisonDistanceOffset: 0
+  collisonDistanceOffset: 7
   minScale: 1
-  maxScale: 5
+  maxScale: 4
   minSpeed: 0
   maxSpeed: 2
   rotationValue: 90

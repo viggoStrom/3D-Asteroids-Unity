@@ -23,7 +23,7 @@ public class AsteroidController : MonoBehaviour
     Transform asteroidTransform;
     Vector3 randomRotation;
 
-    private Vector3 randomMovement(float min, float max)
+    private Vector3 RandomMovement(float min, float max)
     {
         var x = Random.Range(min, max);
         var y = Random.Range(min, max);
@@ -31,7 +31,7 @@ public class AsteroidController : MonoBehaviour
         return new Vector3(x, y, z);
     }
 
-    private Vector3 randomScale(float min, float max)
+    private Vector3 RandomScale(float min, float max)
     {
         var x = Random.Range(min, max);
         var y = Random.Range(min, max);
@@ -39,7 +39,7 @@ public class AsteroidController : MonoBehaviour
         return new Vector3(x, y, z);
     }
 
-    private float randomMass(float max)
+    private float RandomMass(float max)
     {   
             var m = Random.Range(1, max);
             return m;
@@ -55,18 +55,18 @@ public class AsteroidController : MonoBehaviour
         half.asteroidTransform.localScale = new Vector3((this.asteroidTransform.localScale.x * 0.5f), (this.asteroidTransform.localScale.y * 0.5f), (this.asteroidTransform.localScale.y * 0.5f));
         half.mass = this.mass * 0.5f;
         half.GetComponent<Rigidbody>().mass = half.mass;
-        half.GetComponent<Rigidbody>().velocity = randomMovement(minSpeed, maxSpeed);
+        half.GetComponent<Rigidbody>().velocity = RandomMovement(minSpeed, maxSpeed);
 
         this.asteroidTransform.localScale = new Vector3((this.asteroidTransform.localScale.x * 0.5f), (this.asteroidTransform.localScale.y * 0.5f), (this.asteroidTransform.localScale.y * 0.5f));
         this.mass *= 0.5f;
         this.GetComponent<Rigidbody>().mass = this.mass;
-        this.GetComponent<Rigidbody>().velocity = randomMovement(minSpeed, maxSpeed);
+        this.GetComponent<Rigidbody>().velocity = RandomMovement(minSpeed, maxSpeed);
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Asteroids")
+        if (other.gameObject.CompareTag("Asteroids") || other.gameObject.CompareTag("Projectile"))
         {
             if ((this.mass * 0.5f) >= 1)
             {
@@ -100,10 +100,10 @@ public class AsteroidController : MonoBehaviour
         randomRotation.z = Random.Range(-rotationValue, rotationValue);
 
 
-        asteroidTransform.localScale = randomScale(minScale, maxScale);
+        asteroidTransform.localScale = RandomScale(minScale, maxScale);
         var rigidBody = GetComponent<Rigidbody>();
-        rigidBody.mass = randomMass(mass);
-        rigidBody.velocity = randomMovement(minSpeed, maxSpeed);
+        rigidBody.mass = RandomMass(mass);
+        rigidBody.velocity = RandomMovement(minSpeed, maxSpeed);
         Destroy(this.gameObject, maxLifeTime);
 
     }

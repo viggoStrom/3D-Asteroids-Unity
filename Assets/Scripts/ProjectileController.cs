@@ -11,4 +11,12 @@ public class ProjectileController : MonoBehaviour
     {
         transform.Translate(Vector3.forward * Time.deltaTime * ProjectileSpeed);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Asteroids"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
