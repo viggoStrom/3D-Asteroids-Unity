@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ShipController : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class ShipController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Asteroids"))
         {
-            // ui stuff
+            SceneManager.LoadScene("EndScreen");
             Destroy(this.gameObject);
         }
     }
