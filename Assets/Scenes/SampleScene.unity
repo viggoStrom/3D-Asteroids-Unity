@@ -1885,6 +1885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileParent: {fileID: 535158618}
   ProjectilePrefab: {fileID: 4455308247111743370, guid: a94f3df7e904ac84ca46c0691ad64da4, type: 3}
+  Crosshair: {fileID: 1400067268}
 --- !u!1 &893925893 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4750607313701582927, guid: b6f5d9493b431d84eb1e3623a4e8e496, type: 3}
