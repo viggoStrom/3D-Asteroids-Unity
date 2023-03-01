@@ -9,7 +9,7 @@ public class ProjectileController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * ProjectileSpeed);
+        transform.Translate(ProjectileSpeed * Time.deltaTime * Vector3.forward);
     }
 
     private void OnTriggerEnter(Collider other)

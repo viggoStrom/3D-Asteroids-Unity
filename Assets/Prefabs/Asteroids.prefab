@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165e316e7a5952c4192d3e52b10fb6d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreObject: {fileID: 0}
   mass: 10
   maxLifeTime: 60
   collisonDistanceOffset: 7

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AsteroidController : MonoBehaviour
 {
+    public ScoreKeeper ScoreKeeper;
+
     public float mass;
     public float maxLifeTime;
 
@@ -40,16 +42,16 @@ public class AsteroidController : MonoBehaviour
     }
 
     private float RandomMass(float max)
-    {   
-            var m = Random.Range(1, max);
-            return m;
+    {
+        var m = Random.Range(1, max);
+        return m;
     }
 
 
     private void CreateSplit()
     {
         Vector3 explosionPosition = this.asteroidTransform.position;
-        explosionPosition = explosionPosition + Random.insideUnitSphere * collisonDistanceOffset;
+        explosionPosition += Random.insideUnitSphere * collisonDistanceOffset;
         AsteroidController half = Instantiate(this, explosionPosition, this.asteroidTransform.rotation);
 
         half.asteroidTransform.localScale = new Vector3((this.asteroidTransform.localScale.x * 0.5f), (this.asteroidTransform.localScale.y * 0.5f), (this.asteroidTransform.localScale.y * 0.5f));
@@ -64,28 +66,24 @@ public class AsteroidController : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Projectile"))
+        {
+            ScoreKeeper.UpdateScore();
+        }
         if (other.gameObject.CompareTag("Asteroids") || other.gameObject.CompareTag("Projectile"))
         {
             if ((this.mass * 0.5f) >= 1)
             {
                 CreateSplit();
             }
-            else 
+            else
             {
                 Destroy(this.gameObject);
-            }  
+            }
         }
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.tag == "Asteroids")
-    //    {
-    //     Destroy(this.gameObject);  
-    //    }
-    //}
 
     private void Awake()
     {
@@ -94,11 +92,12 @@ public class AsteroidController : MonoBehaviour
 
     private void Start()
     {
-        //Instantiates a Random rotation for the gameObject
+        // Instantiates a Random rotation for the gameObject
         randomRotation.x = Random.Range(-rotationValue, rotationValue);
         randomRotation.y = Random.Range(-rotationValue, rotationValue);
         randomRotation.z = Random.Range(-rotationValue, rotationValue);
 
+        ScoreKeeper = FindObjectOfType<ScoreKeeper>();
 
         asteroidTransform.localScale = RandomScale(minScale, maxScale);
         var rigidBody = GetComponent<Rigidbody>();
@@ -110,7 +109,9 @@ public class AsteroidController : MonoBehaviour
 
     private void Update()
     {
-        asteroidTransform.Rotate(randomRotation * Time.deltaTime * rotationMagnifier);  
+        asteroidTransform.Rotate(rotationMagnifier * Time.deltaTime * randomRotation);
     }
+
+
 
 }
